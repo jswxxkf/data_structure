@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000000;
+}
+
+a {
+  position: relative;
+  width: 400px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 24px;
+  color: #ffffff;
+  border-radius: 50px;
+  background-image: linear-gradient(to right, #03a9f4, #f441a5, #ffeb3b, #09a8f4);
+  background-size: 400%;
+  z-index: 1;
+}
+
+a:hover {
+  animation: sun 8s infinite;
+}
+
+a::before {
+  content: '';
+  position: absolute;
+  /*利用定位盒子宽高计算公式，各方向撑开5px*/
+  top: -5px;
+  bottom: -5px;
+  right: -5px;
+  left: -5px;
+  border-radius: 50px;
+  background-image: linear-gradient(to right, #03a9f4, #f441a5, #ffeb3b, #09a8f4);
+  background-size: 400%;
+  z-index: -1;
+  /*利用滤镜设置模糊距离 显示发光效果*/
+  filter: blur(20px);
+}
+
+a:hover::before {
+  animation: sun 8s infinite;
+}
+
+@keyframes sun {
+  100% {
+    background-position: -400% 0;
+  }
+}
