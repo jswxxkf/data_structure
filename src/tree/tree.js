@@ -25,15 +25,19 @@ export class BinarySearchTree {
 
   insertNode(node, newNode) {
     if (newNode.key > node.key) {
+      // 当前节点的右子树为空，则直接插入右子树
       if (node.right === null) {
         node.right = newNode;
       } else {
+        // 否则，递归进入右子树
         this.insertNode(node.right, newNode);
       }
     } else {
+      // 当前节点的左子树为空，则直接插入左子树
       if (node.left === null) {
         node.left = newNode;
       } else {
+        // 否则，递归进入左子树
         this.insertNode(node.left, newNode);
       }
     }
@@ -48,7 +52,7 @@ export class BinarySearchTree {
     if (node === null) {
       return
     }
-    console.log(node.key);
+    console.log(node.key);  // 先序访问结点
     this.preOrderTraverseNode(node.left);
     this.preOrderTraverseNode(node.right);
   }
@@ -81,7 +85,7 @@ export class BinarySearchTree {
     console.log(node.key);
   }
 
-  // 获取最小值
+  // 获取最小值，沿着左子树访问到终点
   min() {
     let node = this.root;
     while (node.left !== null) {
@@ -90,7 +94,7 @@ export class BinarySearchTree {
     return node.key;
   }
 
-  // 求取最大值
+  // 求取最大值，沿着右子树访问到终点
   max() {
     let node = this.root;
     while (node.right !== null) {
@@ -105,12 +109,15 @@ export class BinarySearchTree {
   }
 
   searchNode(node, key) {
+    // 递归出口
     if (node === null) {
       return false
     }
     if (key < node.key) {
+      // 待查找的key值小于当前节点，则必定在当前节点的左子树中
       return this.searchNode(node.left, key);
     } else if (key > node.key) {
+      // 待查找的key值大于当前节点，则必定在当前节点的右子树中
       return this.searchNode(node.right, key);
     } else {
       return true;  // key === node.key 说明已找到
@@ -149,17 +156,18 @@ export class BinarySearchTree {
       }
       if (current === null) return false;
     }
-    // 找到节点 情况1 删除的节点是叶子节点
+    // 找到节点 情况1 删除的节点是叶子节点(度为0的情况)
     if (current.left === null && current.right === null) {
       if (current === this.root) {  // 搜索树只有一个根节点
         this.root = null;
       } else if (isLeftChild) {
+        // 决定是删除左孩子还是右孩子
         parent.left = null;
       } else {
         parent.right = null;
       }
     }
-    // 情况2 删除的节点只有一个左子节点
+    // 情况2 删除的节点只有一个左子节点(度为1的情况)
     else if (current.right === null) {
       if (current === this.root) {
         this.root = current.left;
