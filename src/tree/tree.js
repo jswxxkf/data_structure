@@ -1,14 +1,14 @@
 class Node {
   constructor(key) {
-    this.key = key
-    this.left = null
-    this.right = null
+    this.key = key;
+    this.left = null;
+    this.right = null;
   }
 }
 
 export class BinarySearchTree {
   constructor() {
-    this.root = null
+    this.root = null;
   }
 
   // 1. insert(key) 向二叉搜索树中插入一个新的键
@@ -50,9 +50,9 @@ export class BinarySearchTree {
 
   preOrderTraverseNode(node) {
     if (node === null) {
-      return
+      return;
     }
-    console.log(node.key);  // 先序访问结点
+    console.log(node.key); // 先序访问结点
     this.preOrderTraverseNode(node.left);
     this.preOrderTraverseNode(node.right);
   }
@@ -64,7 +64,7 @@ export class BinarySearchTree {
 
   inOrderTraverseNode(node) {
     if (node === null) {
-      return
+      return;
     }
     this.inOrderTraverseNode(node.left);
     console.log(node.key);
@@ -78,7 +78,7 @@ export class BinarySearchTree {
 
   postOrderTraverseNode(node) {
     if (node === null) {
-      return
+      return;
     }
     this.postOrderTraverseNode(node.left);
     this.postOrderTraverseNode(node.right);
@@ -111,7 +111,7 @@ export class BinarySearchTree {
   searchNode(node, key) {
     // 递归出口
     if (node === null) {
-      return false
+      return false;
     }
     if (key < node.key) {
       // 待查找的key值小于当前节点，则必定在当前节点的左子树中
@@ -120,7 +120,7 @@ export class BinarySearchTree {
       // 待查找的key值大于当前节点，则必定在当前节点的右子树中
       return this.searchNode(node.right, key);
     } else {
-      return true;  // key === node.key 说明已找到
+      return true; // key === node.key 说明已找到
     }
   }
 
@@ -132,18 +132,18 @@ export class BinarySearchTree {
       } else if (key > node.key) {
         node = node.right;
       } else {
-        return true
+        return true;
       }
     }
-    return false
+    return false;
   }
 
   // *** 二叉搜索树的删除操作 ***
   remove(key) {
     // 1. 找到要删除的节点
-    let current = this.root
-    let parent = null
-    let isLeftChild = true
+    let current = this.root;
+    let parent = null;
+    let isLeftChild = true;
     // 2. 开始查找要删除的节点
     while (current.key !== key) {
       parent = current;
@@ -151,14 +151,15 @@ export class BinarySearchTree {
         isLeftChild = true;
         current = current.left;
       } else {
-        isLeftChild = false
+        isLeftChild = false;
         current = current.right;
       }
       if (current === null) return false;
     }
     // 找到节点 情况1 删除的节点是叶子节点(度为0的情况)
     if (current.left === null && current.right === null) {
-      if (current === this.root) {  // 搜索树只有一个根节点
+      if (current === this.root) {
+        // 搜索树只有一个根节点
         this.root = null;
       } else if (isLeftChild) {
         // 决定是删除左孩子还是右孩子

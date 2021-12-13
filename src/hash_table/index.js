@@ -1,4 +1,4 @@
-import {hashFunc, HashTable} from "./hash_table.js";
+import { hashFunc, HashTable } from './hash_table.js';
 
 // console.log(hashFunc('name', 11));
 // console.log(hashFunc('age', 11));
@@ -28,8 +28,8 @@ hashTable.put('bbb', 111);
 hashTable.put('ccc', 111);
 hashTable.put('ddd', 111);
 hashTable.put('eee', 111);
-console.log(hashTable.limit + '个限制')
+console.log(hashTable.limit + '个限制');
 console.log(hashTable.storage);
 hashTable.put('mmm', 222);
-console.log(hashTable.limit + '个限制')
+console.log(hashTable.limit + '个限制');
 console.log(hashTable.storage);

@@ -1,4 +1,4 @@
-import { BinarySearchTree } from "./tree.js";
+import { BinarySearchTree } from './tree.js';
 
 const bst = new BinarySearchTree();
 

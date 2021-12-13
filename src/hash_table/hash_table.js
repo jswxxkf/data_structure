@@ -13,14 +13,14 @@ export function hashFunc(str, max) {
   return hashCode;
 }
 
-const MAX_LOAD_FACTOR = 0.75;  // 最大装填因子，超过需扩容再哈希
-const MIN_LOAD_FACTOR = 0.25;  // 最小装填因子，低于需缩减容量再哈希
+const MAX_LOAD_FACTOR = 0.75; // 最大装填因子，超过需扩容再哈希
+const MIN_LOAD_FACTOR = 0.25; // 最小装填因子，低于需缩减容量再哈希
 
 export class HashTable {
   constructor() {
-    this.storage = [];  // 数组存储元素
-    this.count = 0;  // 当前存放了多少个元素
-    this.limit = 7;  // 最大可以存放多少个元素(总个数) 哈希表起始容量
+    this.storage = []; // 数组存储元素
+    this.count = 0; // 当前存放了多少个元素
+    this.limit = 7; // 最大可以存放多少个元素(总个数) 哈希表起始容量
   }
 
   // 哈希函数
@@ -101,12 +101,12 @@ export class HashTable {
     for (let i = 0; i < bucket.length; i++) {
       let tuple = bucket[i];
       if (tuple[0] === key) {
-        bucket.splice(i, 1);  // 注意splice方法的第二个参数,为1删除 为0新增,且原地修改数组
+        bucket.splice(i, 1); // 注意splice方法的第二个参数,为1删除 为0新增,且原地修改数组
         this.count--;
         // 判断是否需要缩小容量
         if (this.limit > 8 && this.count < this.limit * MIN_LOAD_FACTOR) {
           let newLimit = Math.floor(this.limit / 2);
-          newLimit = this.getPrime(newLimit);  // 17 => 11
+          newLimit = this.getPrime(newLimit); // 17 => 11
           this.resize(newLimit);
         }
         return tuple[1];
@@ -133,10 +133,10 @@ export class HashTable {
     this.storage = [];
     this.count = 0;
     // 3. 取出oldStorage中所有的元素，重新放入storage
-    oldStorage.forEach(bucket => {
+    oldStorage.forEach((bucket) => {
       // 3.1 原先桶中元素为空，则无需操作
       if (bucket === null) {
-        return
+        return;
       }
       for (let i = 0; i < bucket.length; i++) {
         let tuple = bucket[i];
@@ -152,10 +152,10 @@ export class HashTable {
 
     for (let i = 2; i < temp; i++) {
       if (num % i === 0) {
-        return false
+        return false;
       }
     }
-    return true
+    return true;
   }
 
   // 找到num的下一个质数
