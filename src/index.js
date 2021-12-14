@@ -5,13 +5,13 @@
 // import './queue';
 
 // 导入优先队列结构的封装及测试代码
-import './priority_queue';
+// import './priority_queue';
 
 // 导入单向链表结构的封装及测试代码
-// import './LinkedList'
+// import './linked_list';
 
 // 导入双向链表结构的封装及测试代码
-// import './DoublyLinkedList'
+import './bi_linked_list';
 
 // 导入集合结构的封装及测试代码
 // import './Set'
